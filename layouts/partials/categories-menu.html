@@ -1,0 +1,11 @@
+<div class="categories">
+	<ul class="inline categories">
+		{{ $title := .Title }}
+		{{ range .Site.Params.categories }}
+		<a href="/categories/{{ lower . }}"
+			 class="{{ if eq $title . }} active {{ end }}">
+			<li class="category {{ lower . }}">{{ . }}</li>
+		</a>
+		{{ end }}
+	</ul>
+</div>

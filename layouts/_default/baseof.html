@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="referrer" content="no-referrer-when-downgrade">
+
+	<title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+	<meta name="description" content="{{ .Site.Params.Description }}">
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	{{ $styles := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+
+</head>
+<body>
+  <div id="container">
+    <header class="page-width">
+			{{ partial "logo.html" }}
+			<nav>
+				{{ $currentPage := . }}
+				{{ range .Site.Menus.main }}
+				<a class="{{if eq $currentPage.Title .Name }} active {{ end }}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+    {{ end }}
+
+			</nav>
+    </header>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+		</div>
+  <footer>
+		<ul>
+			<li>
+				<span>phone</span>{{ with .Site.Params.phone }}
+				<a href="tel:{{ . }}">{{ .}}</a>
+				{{ end }}
+			</li>
+			<li>
+				<span>email</span>
+				<span>{{ .Site.Params.email }}</span>
+			</li>
+		</ul>
+		<a href="{{ .Site.Params.instagram }}">{{ partial "instagram-logo.html" }}</a>
+  </footer>
+</body>
+</html>

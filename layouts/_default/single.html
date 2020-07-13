@@ -1,0 +1,59 @@
+{{ define "main" }}
+<div id="project" class="page-width">
+
+	<header>
+		<h1>{{ .Params.title }}</h1>
+		<ul>
+
+			<li>
+				<span>Client</span>
+				<span>{{ .Params.company }}
+					{{ with .Params.client }}<span class="end-client">{{.}}</span>{{ end }}
+				</span>
+			</li>
+			{{ with .Params.agency }}
+			<li>
+				<span>Agency</span>
+				<span>{{ . }}</span>
+			</li>
+			{{ end }}
+			<li>
+				<span>Responsibilities</span>
+				<ul class="inline categories">
+					{{ range .Params.categories }}
+					<li class="category {{ lower . }}">{{ . }}</li>
+					{{ end }}
+				</ul>
+			</li>
+		</ul>
+	</header>
+
+	{{ with .Params.video }}
+	{{ $id := replaceRE "https?://([a-z\\./]+)" "" . }}
+
+	<div class="video-container">
+		{{ if in . "youtu" }}
+		<iframe src="https://www.youtube.com/embed/{{ $id }}" frameborder="0" allowfullscreen></iframe>
+		{{ end }}
+
+		{{ if in . "vimeo" }}
+		<iframe src="https://player.vimeo.com/video/{{ $id }}?autoplay=1&color=ffffff&title=0&byline=0&portrait=0" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+		{{ end }}
+
+	</div>
+
+	{{ end }}
+
+	<div class="content">
+		{{ .Content }}
+	</div>
+
+	{{ range .Resources.ByType "image" }}
+		{{ $resource := . }}
+		{{ $image := $resource.Fit "900x900" }}
+	  <img src="{{ $image.RelPermalink }}" alt="" />
+  {{ end }}
+
+
+</div>
+{{ end }}
