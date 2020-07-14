@@ -3,29 +3,7 @@
 
 	<header>
 		<h1>{{ .Params.title }}</h1>
-		<ul>
-
-			<li>
-				<span>Client</span>
-				<span>{{ .Params.company }}
-					{{ with .Params.client }}<span class="end-client">{{.}}</span>{{ end }}
-				</span>
-			</li>
-			{{ with .Params.agency }}
-			<li>
-				<span>Agency</span>
-				<span>{{ . }}</span>
-			</li>
-			{{ end }}
-			<li>
-				<span>Responsibilities</span>
-				<ul class="inline categories">
-					{{ range .Params.categories }}
-					<li class="category {{ lower . }}">{{ . }}</li>
-					{{ end }}
-				</ul>
-			</li>
-		</ul>
+		{{ partial "project-details.html" .Params }}
 	</header>
 
 	{{ with .Params.video }}

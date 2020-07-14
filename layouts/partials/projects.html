@@ -1,7 +1,5 @@
 <div class="projects">
 	{{ range .ByParam "order" }}
-		<div class="container">
-			{{ partial "summary.html" . }}
-		</div>
+	  {{ partial "summary.html" . }}
 	{{ end }}
 </div>

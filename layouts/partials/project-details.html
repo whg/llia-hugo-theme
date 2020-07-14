@@ -1,0 +1,22 @@
+<ul>
+	<li>
+		<span>Client</span>
+		<span>{{ .company }}
+			{{ with .client }}<span class="end-client">{{.}}</span>{{ end }}
+		</span>
+	</li>
+	{{ with .agency }}
+	<li>
+		<span>Agency</span>
+		<span>{{ . }}</span>
+	</li>
+	{{ end }}
+	<li>
+		<span>Responsibilities</span>
+		<ul class="inline categories">
+			{{ range .categories }}
+			<li class="category {{ lower . }}">{{ . }}</li>
+			{{ end }}
+		</ul>
+	</li>
+</ul>

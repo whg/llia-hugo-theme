@@ -1,25 +1,27 @@
-<article class="project">
-	<div class="inner">
-		<a href="{{ .RelPermalink }}">
-			<header>
-				<div>
-					<h2>{{ .Title }}</h2>
-					<h3>{{ .Params.Subtitle }}</h3>
-				</div>
-				<ul class="inline categories">
-					{{ range .Params.categories }}
-					<li class="category {{ lower . }}"></li>
-					{{ end }}
-				</ul>
-			</header>
+<div class="container">
+	<article class="project">
+		<div class="inner">
+			<a href="{{ .RelPermalink }}">
+				<header>
+					<div>
+						<h2>{{ .Title }}</h2>
+						<h3>{{ .Params.Subtitle }}</h3>
+					</div>
+					<ul class="inline categories">
+						{{ range .Params.categories }}
+						<li class="category {{ lower . }}"></li>
+						{{ end }}
+					</ul>
+				</header>
 
-			{{ with .Resources.GetMatch "images/*_main*" }}
-			{{ $resource := . }}
-			{{ $image := $resource.Resize "580x" }}
-			<img src="{{ $image.RelPermalink }}" alt="" />
-			{{ end }}
+				{{ with .Resources.GetMatch "images/*_main*" }}
+				{{ $resource := . }}
+				{{ $image := $resource.Resize "580x" }}
+				<img src="{{ $image.RelPermalink }}" alt="" />
+				{{ end }}
 
-		</a>
+			</a>
 
-	</div>
-</article>
+		</div>
+	</article>
+</div>
