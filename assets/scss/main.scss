@@ -46,6 +46,10 @@ $page-width: 720px;
   }
 }
 
+.page {
+  margin-top: 2rem;
+}
+
 #container > header {
   $hpad: 20px;
   margin-top: $vert-margin;
@@ -86,11 +90,12 @@ body > footer {
   align-items: center;
 
   > .contact {
-	margin: 0 1rem;
 	display: flex;
-	justify-content: center;
-	> * {
-	  margin: 0 3rem;
+	padding: 0 $grid-padding * 4;
+	> a {
+	  text-align: right;
+	  flex-grow: 1;
+	  // margin: 0 3rem;
 	}
 	> a:hover {
 	  border: unset;
