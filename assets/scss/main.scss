@@ -1,7 +1,7 @@
 $phone-width: 600px;
 $phone: "(max-width: #{$phone-width})";
 $not-phone: "(min-width: #{$phone-width})";
-$extra-wide: "(min-width: 1100px)";
+$extra-wide: "(min-width: 1200px)";
 
 * {
   text-decoration: unset;
@@ -35,18 +35,14 @@ $page-width: 720px;
 #container {
   width: 100%;
   max-width: 1400px;
-  // margin: 50px;
   margin: 0 auto;
-  // padding: 50px 0;
 }
 
 .page-width {
-  // width: 100vw;
   max-width: calc(#{$page-width} - #{$grid-padding * 2});
   margin: 0 auto;
 
   &.larger {
-	// max-width: ;
   }
 }
 
@@ -82,25 +78,66 @@ main {
 }
 
 body > footer {
-  display: flex;
-  justify-content: center;
-  // align-items: center;
   margin-top: 50px;
+  padding-top: 20px;
   background: #111;
   height: 100%;
   flex: 1;
+  align-items: center;
+
+  > .contact {
+	margin: 0 1rem;
+	display: flex;
+	justify-content: center;
+	> * {
+	  margin: 0 3rem;
+	}
+	> a:hover {
+	  border: unset;
+	}
+  }
+
+  #tags {
+	text-align: center;
+	margin: 2rem 0;
+  }
+
+  ul.tags-list {
+	color: #99a;
+	display: inline-block;
+	li {
+	  display: inline-block;
+	  padding-right: 0.5rem;
+	}
+  }
 }
 
 #project {
   margin-top: $vert-margin;
   padding: 0 $grid-padding;
   header {
-	h1 {
-	  margin-bottom: 0.5em;
+	.title {
+	  display: flex;
+	  align-items: baseline;
+	  h1 {
+		display: inline-block;
+	  }
+	  h2 {
+		display: inline-block;
+		margin-left: 1rem;
+		font-size: 1rem;
+		color: #aaa;
+	  }
+	  h3 {
+		font-size: 1rem;
+		flex-grow: 1;
+		text-align: right;
+		color: #ddd;
+	  }
 	}
-	ul {
+	> ul {
 	  font-size: 1.1rem;
-	  margin-bottom: 0.5em;
+	  margin: 1.5rem 0;
 
 	  li {
 		// margin-bottom: 0.25rem;
@@ -126,6 +163,8 @@ body > footer {
 
   div.content {
 	margin: $vert-margin 0;
+	font-size: 1.2rem;
+	color: #eaeaea;
   }
 
   img {
@@ -174,7 +213,6 @@ div.projects {
 }
 
 
-
 article.project {
   padding: 0 $grid-padding $grid-padding * 2 $grid-padding;
 
@@ -198,8 +236,8 @@ article.project {
 	  color: #fff;
 
 	  &:hover {
-		opacity: 1;
 		transition: opacity 1s;
+		opacity: 1;
 	  }
 
 	  > div {
@@ -263,7 +301,7 @@ p {
 }
 
 a:hover:not(.home) {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #555;
 }
 
 a.active {

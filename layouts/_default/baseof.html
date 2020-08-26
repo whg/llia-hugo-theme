@@ -31,18 +31,23 @@
     </main>
 		</div>
   <footer>
-		<ul>
-			<li>
-				<span>phone</span>{{ with .Site.Params.phone }}
-				<a href="tel:{{ . }}">{{ .}}</a>
-				{{ end }}
-			</li>
-			<li>
-				<span>email</span>
-				<span>{{ .Site.Params.email }}</span>
-			</li>
-		</ul>
-		<a href="{{ .Site.Params.instagram }}">{{ partial "instagram-logo.html" }}</a>
+		<div class="contact">
+			<ul>
+				<li>
+					<span>phone</span>{{ with .Site.Params.phone }}
+					<a href="tel:{{ . }}">{{ .}}</a>
+					{{ end }}
+				</li>
+				<li>
+					<span>email</span>
+					<span>{{ .Site.Params.email }}</span>
+				</li>
+			</ul>
+			<a href="{{ .Site.Params.instagram }}">{{ partial "instagram-logo.html" }}</a>
+		</div>
+		<div id="tags">
+			{{ partial "tags.html" . }}
+		</div>
   </footer>
 </body>
 </html>

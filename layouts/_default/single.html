@@ -1,35 +1,43 @@
 {{ define "main" }}
 <div id="project" class="page-width">
 
-	<header>
-		<h1>{{ .Params.title }}</h1>
-		{{ partial "project-details.html" .Params }}
-	</header>
+  <header>
+    <div class="title">
+	  <h1>{{ .Params.title }}</h1>
+	  <h2>{{ .Params.context }}</h2>
+	  <h3>{{ .Params.date.Format "January 2006" }}</h3>
+    </div>
+	{{ partial "project-details.html" .Params }}
+  </header>
 
-	{{ with .Params.video }}
-	{{ $id := replaceRE "https?://([a-z\\./]+)" "" . }}
+  {{ with .Params.video }}
+  {{ $id := replaceRE "https?://([a-z\\./]+)" "" . }}
 
-	<div class="video-container">
-		{{ if in . "youtu" }}
-		<iframe src="https://www.youtube.com/embed/{{ $id }}" frameborder="0" allowfullscreen></iframe>
-		{{ end }}
-
-		{{ if in . "vimeo" }}
-		<iframe src="https://player.vimeo.com/video/{{ $id }}?autoplay=1&color=ffffff&title=0&byline=0&portrait=0" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
-		{{ end }}
-
-	</div>
-
+  <div class="video-container">
+	{{ if in . "youtu" }}
+	<iframe src="https://www.youtube.com/embed/{{ $id }}" frameborder="0" allowfullscreen></iframe>
 	{{ end }}
 
-	<div class="content">
-		{{ .Content }}
-	</div>
+	{{ if in . "vimeo" }}
+	<iframe src="https://player.vimeo.com/video/{{ $id }}?autoplay=1&color=ffffff&title=0&byline=0&portrait=0" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+	{{ end }}
 
-	{{ range .Resources.ByType "image" }}
-		{{ $resource := . }}
-		{{ $image := $resource.Fit "900x900" }}
-	  <img src="{{ $image.RelPermalink }}" alt="" />
+  </div>
+
+  {{ end }}
+
+  <div class="content">
+	{{ .Content }}
+  </div>
+
+  {{ range .Resources.ByType "image" }}
+  {{ $resource := . }}
+  {{ if strings.HasSuffix $resource.Name ".gif"  }}
+  <img src="{{ $resource.RelPermalink }}" alt="" />
+  {{ else if not (in $resource.Name "_main") }}
+  {{ $image := $resource.Fit "900x900" }}
+  <img src="{{ $image.RelPermalink }}" alt="" />
+  {{ end }}
   {{ end }}
 
 
