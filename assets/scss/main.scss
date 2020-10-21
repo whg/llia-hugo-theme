@@ -34,7 +34,7 @@ $page-width: 720px;
 
 #container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -170,6 +170,15 @@ body > footer {
 	margin: $vert-margin 0;
 	font-size: 1.2rem;
 	color: #eaeaea;
+
+	ul {
+		padding-inline-start: 1em;
+		margin-bottom: 1em;
+
+		li {
+			list-style: circle;
+		}
+	}
   }
 
   img {
@@ -211,9 +220,9 @@ div.projects {
 	  margin-bottom: 1em;
 	}
 
-	@media #{$extra-wide} {
-	  width: 20%;
-	}
+	// @media #{$extra-wide} {
+	//   width: 20%;
+	// }
   }
 }
 
