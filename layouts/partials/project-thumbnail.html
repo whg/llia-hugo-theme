@@ -14,7 +14,7 @@
 					</ul>
 				</header>
 
-				{{ with .Resources.GetMatch "images/*_main*" }}
+				{{ with .Resources.GetMatch "*_main*" }}
 				{{ $resource := . }}
 				{{ $image := $resource.Resize "580x" }}
 				<img src="{{ $image.RelPermalink }}" alt="" />

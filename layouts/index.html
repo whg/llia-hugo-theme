@@ -2,7 +2,7 @@
 
 {{ partial "categories-menu.html" . }}
 
-{{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ $pages := where site.Pages "Params.layout" "==" "single" }}
 {{ partial "projects.html" $pages }}
 
 {{ end }}
