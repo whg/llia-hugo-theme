@@ -15,15 +15,17 @@
 
 </head>
 <body>
-  <div id="container">
+	<div id="container">
     <header class="page-width">
-			{{ partial "logo.html" }}
+			{{ partial "logo.html" . }}
 			<nav>
+				{{ if not .IsHome }}
+				<a href="/" title="Home">Home</a>
+				{{ end }}
 				{{ $currentPage := . }}
 				{{ range .Site.Menus.main }}
 				<a class="{{if eq $currentPage.Title .Name }} active {{ end }}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
-    {{ end }}
-
+				{{ end }}
 			</nav>
     </header>
     <main>
@@ -31,23 +33,7 @@
     </main>
 		</div>
   <footer>
-		<div class="contact">
-			<ul>
-				<li>
-					<span>phone</span>{{ with .Site.Params.phone }}
-					<a href="tel:{{ . }}">{{ .}}</a>
-					{{ end }}
-				</li>
-				<li>
-					<span>email</span>
-					<span>{{ .Site.Params.email }}</span>
-				</li>
-			</ul>
-			<a href="{{ .Site.Params.instagram }}">{{ partial "instagram-logo.html" }}</a>
-		</div>
-		<div id="tags">
-			{{ partial "tags.html" . }}
-		</div>
+		{{ partial "footer.html" . }}
   </footer>
 </body>
 </html>
