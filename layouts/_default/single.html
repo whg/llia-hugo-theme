@@ -19,8 +19,9 @@
 
   {{ end }}
 
+	{{ $parts := (split .Content "|||") }}
   <div class="content">
-	{{ .Content }}
+	{{ safeHTML (index $parts 0) }}
   </div>
 
   {{ range .Resources.Match "*{png,jpg}" }}
@@ -33,6 +34,9 @@
   {{ end }}
   {{ end }}
 
+	<div class="content">
+	{{ safeHTML (index $parts 1) }}
+  </div>
 
 </div>
 {{ end }}

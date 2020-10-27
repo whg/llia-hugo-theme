@@ -1,0 +1,10 @@
+{{ define "main" }}
+<div id="about-page" class="page-width">
+	<div class="about content">
+		{{ .Content }}
+	</div>
+	<div class="image">
+		<img src="{{ .Params.image }}" />
+	</div>
+</div>
+{{ end }}

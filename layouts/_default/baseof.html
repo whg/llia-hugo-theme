@@ -17,7 +17,7 @@
 <body>
   <div id="container">
     <header class="page-width">
-			{{ partial "logo.html" }}
+			{{ partial "logo.html" . }}
 			<nav>
 				{{ if not .IsHome }}
 				<a href="/" title="Home">Home</a>
