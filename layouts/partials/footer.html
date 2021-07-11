@@ -1,19 +1,30 @@
 <footer>
-	<div class="contact page-width">
-		<ul>
-			<li>
-				<span>phone</span>{{ with .Site.Params.phone }}
-				<a href="tel:{{ . }}">{{ .}}</a>
-				{{ end }}
-			</li>
-			<li>
-				<span>email</span>
-				<span>{{ .Site.Params.email }}</span>
-			</li>
-		</ul>
-		<a href="{{ .Site.Params.instagram }}">{{ partial "instagram-logo.html" }}</a>
-	</div>
-	<div id="tags">
-		{{ partial "tags.html" . }}
-	</div>
+  <div class="contact page-width">
+	<ul>
+	  <li>
+		<span>phone</span>{{ with .Site.Params.phone }}
+		  <a href="tel:{{ . }}">{{ .}}</a>
+		{{ end }}
+	  </li>
+	  <li>
+		<span>email</span>
+		<span>{{ .Site.Params.email }}</span>
+	  </li>
+	</ul>
+	<a href="{{ .Site.Params.instagram }}">{{ partial "instagram-logo.html" }}</a>
+  </div>
+  <div id="tags">
+    <ul class="tags-list">
+      {{ range .Site.Taxonomies.context }}
+        <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+  <div id="tags">
+    <ul class="tags-list small">
+      {{ range .Site.Taxonomies.tags }}
+        <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
 </footer>

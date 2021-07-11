@@ -28,7 +28,7 @@ body {
   overflow-y: scroll;
 }
 
-$grid-padding: 5px;
+$grid-padding: 10px;
 $vert-margin: 30px;
 $page-width: 720px;
 
@@ -85,7 +85,7 @@ main {
 }
 
 body > footer {
-  margin-top: 50px;
+  margin-top: 30px;
   padding-top: 20px;
   background: #111;
   height: 100%;
@@ -116,6 +116,11 @@ body > footer {
 	li {
 	  display: inline-block;
 	  padding-right: 0.5rem;
+	}
+
+	&.small {
+	  font-size: 0.8rem;
+	  color: #778;
 	}
   }
 }
@@ -188,6 +193,15 @@ body > footer {
 	margin: 0 auto;
 	margin-bottom: 1em;
   }
+
+  div.prev-next {
+	display: flex;
+	color: #ccc;
+	height: 2rem;
+	font-size: 1.5rem;
+	padding-top: 30px;
+	border-top: 1px dotted #555;
+  }
 }
 
 .content {
@@ -196,7 +210,6 @@ body > footer {
   }
   a {
 	color: #abd;
-	border-bottom: 1px solid #abd;
   }
 }
 
@@ -397,6 +410,35 @@ ul.categories {
   }
 }
 
+#page, #about-page {
+  margin-top: $vert-margin;
+
+  h1, h2, h3 {
+	margin-top: 2rem;
+  }
+  p {
+	margin: 1rem 0;
+  }
+  img {
+	max-width: 100%;
+	margin: 0 auto;
+  }
+}
+
+#about-page {
+  display: flex;
+
+  div.about {
+	flex: 1;
+  }
+  div.image {
+	width: 40%;
+	img {
+	  width: 100%;
+	}
+  }
+}
+
 // from https://embedresponsively.com/
 .video-container {
   position: relative;
@@ -421,4 +463,18 @@ ul.categories {
 svg.insta {
   height: 20px;
   fill: #eee;
+}
+
+div.work-tags {
+  span.tag {
+	background: #444;
+	border-radius: 5px;
+	padding: 2px 7px;
+	display: inline-block;
+	margin: 2px;
+  }
+}
+
+.spacer {
+  flex-grow: 1;
 }

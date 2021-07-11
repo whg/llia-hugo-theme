@@ -13,15 +13,8 @@
 						{{ end }}
 					</ul>
 				</header>
-
-				{{ with .Resources.GetMatch "*_main*" }}
-				{{ $resource := . }}
-				{{ $image := $resource.Resize "580x" }}
-				<img src="{{ $image.RelPermalink }}" alt="" />
-				{{ end }}
-
+				{{ partial "thumbnail-img.html" . }}
 			</a>
-
 		</div>
 	</article>
 </div>
