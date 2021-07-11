@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
 	<meta charset="utf-8">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,27 +12,25 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 	{{ $styles := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
 	<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
-
-</head>
-<body>
-  <div id="container">
-    <header>
-			{{ partial "logo.html" . }}
-			<nav>
-				{{ if not .IsHome }}
-				<a href="/" title="Home">Home</a>
-				{{ end }}
-				{{ $currentPage := . }}
-				{{ range .Site.Menus.main }}
-				<a class="{{if eq $currentPage.Title .Name }} active {{ end }}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
-    {{ end }}
-
-			</nav>
-    </header>
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+		{{ partial "logo.html" . }}
+		<nav>
+		  {{ if not .IsHome }}
+			<a href="/" title="Home">Home</a>
+		  {{ end }}
+		  {{ $currentPage := . }}
+		  {{ range .Site.Menus.main }}
+			<a class="{{if eq $currentPage.Title .Name }} active {{ end }}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+          {{ end }}
+		</nav>
+      </header>
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main>
 	</div>
 	{{ partial "footer.html" . }}
-</body>
+  </body>
 </html>

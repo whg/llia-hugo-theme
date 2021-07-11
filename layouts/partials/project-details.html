@@ -1,30 +1,30 @@
 <header>
   <div class="title">
-		<h1>{{ .title }}</h1>
-		<h2>{{ .context }}</h2>
-		<h3>{{ .date.Format "January 2006" }}</h3>
+	<h1>{{ .title }}</h1>
+	<h2>{{ .context }}</h2>
+	<h3>{{ .date.Format "January 2006" }}</h3>
   </div>
 
-	<ul>
-		<li>
-			<span>Client</span>
-			<span>{{ .company }}
-				{{ with .client }}<span class="end-client">{{.}}</span>{{ end }}
-			</span>
-		</li>
-		{{ with .agency }}
-		<li>
-			<span>Agency</span>
-			<span>{{ . }}</span>
-		</li>
+  <ul>
+	<li>
+	  <span>Client</span>
+	  <span>{{ .company }}
+		{{ with .client }}<span class="end-client">{{.}}</span>{{ end }}
+	  </span>
+	</li>
+	{{ with .agency }}
+	  <li>
+	    <span>Agency</span>
+	    <span>{{ . }}</span>
+	  </li>
+	{{ end }}
+	<li>
+	  <span>Responsibilities</span>
+	  <ul class="inline categories">
+		{{ range .categories }}
+		  <li class="category {{ lower . }}">{{ . }}</li>
 		{{ end }}
-		<li>
-			<span>Responsibilities</span>
-			<ul class="inline categories">
-				{{ range .categories }}
-				<li class="category {{ lower . }}">{{ . }}</li>
-				{{ end }}
-			</ul>
-		</li>
-	</ul>
+	  </ul>
+	</li>
+  </ul>
 </header>
