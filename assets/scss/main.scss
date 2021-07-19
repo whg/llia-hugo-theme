@@ -31,10 +31,10 @@ body {
 $grid-padding: 10px;
 $vert-margin: 30px;
 $page-width: 720px;
+$max-width: 1200px;
 
 #container {
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -44,6 +44,10 @@ $page-width: 720px;
 
   &.larger {
   }
+}
+
+.max-width {
+  max-width: $max-width;
 }
 
 .page {
@@ -89,12 +93,16 @@ body > footer {
   padding-top: 20px;
   background: #111;
   height: 100%;
+  // display: flex;
   flex: 1;
+  // flex-direction: column;
   align-items: center;
 
   > .contact {
 	display: flex;
 	padding: 0 $grid-padding * 4;
+	margin-bottom: 2rem;
+
 	> a {
 	  text-align: right;
 	  flex-grow: 1;
@@ -102,25 +110,6 @@ body > footer {
 	}
 	> a:hover {
 	  border: unset;
-	}
-  }
-
-  #tags {
-	text-align: center;
-	margin: 2rem 0;
-  }
-
-  ul.tags-list {
-	color: #99a;
-	display: inline-block;
-	li {
-	  display: inline-block;
-	  padding-right: 0.5rem;
-	}
-
-	&.small {
-	  font-size: 0.8rem;
-	  color: #778;
 	}
   }
 }
@@ -176,31 +165,42 @@ body > footer {
 
   div.content {
 	margin: $vert-margin 0;
-	font-size: 1.2rem;
-	color: #eaeaea;
+	// font-size: 1.2rem;
+	color: #ddd;
+
 
 	ul {
-		padding-inline-start: 1em;
-		margin-bottom: 1em;
+	  padding-inline-start: 1em;
+	  margin-bottom: 1em;
 
-		li {
-			list-style: circle;
-		}
+	  li {
+		list-style: disc;
+		padding-bottom: 0.5rem;
+	  }
 	}
   }
 
-  img {
+  img, iframe {
+	display: block;
 	margin: 0 auto;
 	margin-bottom: 1em;
   }
 
   div.prev-next {
-	display: flex;
-	color: #ccc;
-	height: 2rem;
-	font-size: 1.5rem;
 	padding-top: 30px;
 	border-top: 1px dotted #555;
+	>p {
+	  text-align: center;
+	  font-style: italic;
+	  color: #aaa;
+	}
+
+	>div {
+	  display: flex;
+	  color: #ccc;
+	  height: 2rem;
+	  font-size: 1.5rem;
+	}
   }
 }
 
@@ -323,7 +323,6 @@ article.project {
 	  }
 	}
   }
-
 }
 
 p {
@@ -406,6 +405,28 @@ ul.categories {
 	&.build::before {
 	  content: "\2635";
 	  color: #acc;
+	}
+  }
+}
+
+.tags {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem;
+
+  ul.tags-list {
+	color: #99a;
+	display: inline-block;
+
+	li {
+	  display: inline-block;
+	  padding-right: 0.5rem;
+	  line-height: 1.5rem;
+	}
+
+	&.small {
+	  font-size: 0.9rem;
+	  color: #667;
 	}
   }
 }

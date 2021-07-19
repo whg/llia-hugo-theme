@@ -38,18 +38,31 @@
 	  {{ safeHTML (index $parts 1) }}
     </div>
 
+    <div class="tags">
+      <ul class="tags-list small">
+        {{ range .Params.tags }}
+          <li>
+            <a href="/tags/{{ . }}">{{ . }}</a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+
     <div class="prev-next">
-	  {{if .Next}}
-        <a href="{{ .Next.RelPermalink }}">
-          ⟵ {{ .Next.Name  }}
-        </a>
-	  {{end}}
-      <div class="spacer"></div>
-      {{if .Prev}}
-        <a href="{{ .Prev.RelPermalink }}">
-          {{ .Prev.Name  }} ⟶
-        </a>
-	  {{end}}
+      <!-- <p>Other projects</p> -->
+      <div>
+	    {{if .Next}}
+          <a href="{{ .Next.RelPermalink }}">
+            ⟵ {{ .Next.Name  }}
+          </a>
+	    {{end}}
+        <div class="spacer"></div>
+        {{if .Prev}}
+          <a href="{{ .Prev.RelPermalink }}">
+            {{ .Prev.Name  }} ⟶
+          </a>
+	    {{end}}
+      </div>
     </div>
 
   </div>
