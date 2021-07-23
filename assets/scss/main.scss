@@ -246,6 +246,9 @@ div.projects {
 article.project {
   padding: 0 $grid-padding $grid-padding * 2 $grid-padding;
 
+  opacity: 0;
+  transition: opacity 1s;
+
   > div.inner {
 	position: relative;
   }
