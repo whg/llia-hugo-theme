@@ -451,13 +451,20 @@ ul.categories {
 
 #about-page {
   display: flex;
+  flex-flow: row wrap;
+  @media #{$phone} {
+	flex-flow: column-reverse wrap;
+  }
 
   div.about {
 	flex: 1;
   }
   div.image {
-	width: 40%;
+	max-width: 40%;
 	margin: 1rem;
+	@media #{$phone} {
+	  margin: 0 auto;
+	}
 	img {
 	  width: 100%;
 	}

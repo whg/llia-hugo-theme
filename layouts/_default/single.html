@@ -4,15 +4,15 @@
     {{ partial "project-details.html" .Params }}
 
     {{ with .Params.video }}
-      {{ $id := replaceRE "https?://([a-z\\./]+)" "" . }}
+      {{ $id := replaceRE "https?://([a-z\\.]+)" "" . }}
 
       <div class="video-container">
 	    {{ if in . "youtu" }}
-	      <iframe src="https://www.youtube.com/embed/{{ $id }}" frameborder="0" allowfullscreen></iframe>
+	      <iframe src="https://www.youtube.com/embed{{ $id }}" frameborder="0" allowfullscreen></iframe>
 	    {{ end }}
 
 	    {{ if in . "vimeo" }}
-	      <iframe src="https://player.vimeo.com/video/{{ $id }}?color=ffffff&title=0&byline=0&portrait=0" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+	      <iframe src="https://player.vimeo.com/video{{ $id }}?color=ffffff&title=0&byline=0&portrait=0" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
 	    {{ end }}
       </div>
     {{ end }}
