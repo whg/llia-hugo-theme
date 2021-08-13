@@ -6,8 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="referrer" content="no-referrer-when-downgrade">
 
-	<title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
-	<meta name="description" content="{{ .Site.Params.Description }}">
+	<title>{{ if .Title }}{{ .Title }}{{ end }}{{ if not .IsHome }} - {{ .Site.Title }}{{ end }}</title>
+	<meta name="title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ .Site.Title }}">
+	<meta name="description" content="{{ if .IsHome }}{{ .Site.Params.Description }}{{ else }}{{ .Params.Subtitle }} by {{ .Site.Title }}{{ end }}">
 
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 	{{ $styles := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
