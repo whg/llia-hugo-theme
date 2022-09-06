@@ -1,9 +1,9 @@
 {{ with .Resources.GetMatch "*_main*" }}
   {{ $resource := . }}
   {{ if strings.HasSuffix $resource.Name ".png"  }}
-    <img data-src="{{ $resource.RelPermalink }}" alt="" />
+    <img src="{{ $resource.RelPermalink }}" alt="" />
   {{ else }}
     {{ $image := $resource.Resize "580x" }}
-    <img data-src="{{ $image.RelPermalink }}" alt="" />
+    <img src="{{ $image.RelPermalink }}" alt="" />
   {{ end }}
 {{ end }}
